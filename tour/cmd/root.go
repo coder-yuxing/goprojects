@@ -8,6 +8,8 @@ func Execute() error {
 	return rootCmd.Execute()
 }
 
+// 子命令注册
 func init() {
 	rootCmd.AddCommand(wordCmd)
+	rootCmd.AddCommand(timeCmd)
 }
