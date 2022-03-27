@@ -1,8 +1,8 @@
 package store
 
 import (
-	mystore "github.com/yuxing/hellomodule/bookstore/store"
-	"github.com/yuxing/hellomodule/bookstore/store/factory"
+	"github.com/yuxing/goprojects/bookstore/store/factory"
+	mystore "github.com/yuxing/goprojects/bookstore/store"
 	"sync"
 )
 

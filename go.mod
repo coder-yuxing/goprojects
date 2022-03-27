@@ -1,4 +1,4 @@
-module github.com/yuxing/hellomodule
+module github.com/yuxing/goprojects
 
 go 1.16
 

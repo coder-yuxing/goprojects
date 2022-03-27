@@ -2,8 +2,8 @@ package main
 
 import (
 	"context"
-	"github.com/yuxing/hellomodule/bookstore/server"
-	"github.com/yuxing/hellomodule/bookstore/store/factory"
+	"github.com/yuxing/goprojects/bookstore/server"
+	"github.com/yuxing/goprojects/bookstore/store/factory"
 	"log"
 	"os"
 	"os/signal"

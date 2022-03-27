@@ -4,8 +4,8 @@ import (
 	"context"
 	"encoding/json"
 	"github.com/gorilla/mux"
-	"github.com/yuxing/hellomodule/bookstore/server/middleware"
-	"github.com/yuxing/hellomodule/bookstore/store"
+	"github.com/yuxing/goprojects/bookstore/server/middleware"
+	"github.com/yuxing/goprojects/bookstore/store"
 	"net/http"
 	"time"
 )

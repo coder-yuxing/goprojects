@@ -2,7 +2,7 @@ package factory
 
 import (
 	"fmt"
-	"github.com/yuxing/hellomodule/bookstore/store"
+	"github.com/yuxing/goprojects/bookstore/store"
 	"sync"
 )
 
