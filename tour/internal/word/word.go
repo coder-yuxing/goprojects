@@ -17,7 +17,7 @@ func ToUpper(s string) string {
 }
 
 // ToLower 单词全部转换为小写
-func ToLower(s string) string  {
+func ToLower(s string) string {
 	return strings.ToLower(s)
 }
 
@@ -49,6 +49,3 @@ func CamelCaseToUnderscore(s string) string {
 	}
 	return string(output)
 }
-
-
-

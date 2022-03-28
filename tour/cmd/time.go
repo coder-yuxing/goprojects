@@ -32,9 +32,9 @@ var nowTimeCmd = &cobra.Command{
 }
 
 var calculateTimeCmd = &cobra.Command{
-	Use: "calc",
+	Use:   "calc",
 	Short: "计算所需时间",
-	Long: "计算所需时间",
+	Long:  "计算所需时间",
 	Run: func(cmd *cobra.Command, args []string) {
 		var currentTimer time.Time
 		var layout = "2006-01-02 15:04:05"
@@ -63,7 +63,7 @@ var calculateTimeCmd = &cobra.Command{
 	},
 }
 
-func init()  {
+func init() {
 	timeCmd.AddCommand(nowTimeCmd)
 	timeCmd.AddCommand(calculateTimeCmd)
 

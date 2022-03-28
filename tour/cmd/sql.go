@@ -16,7 +16,7 @@ var (
 	tableName string
 )
 
-func init()  {
+func init() {
 	sqlCmd.AddCommand(sql2structCmd)
 
 	sql2structCmd.Flags().StringVarP(&username, "username", "", "", "请输入数据库的账号")
@@ -29,18 +29,18 @@ func init()  {
 }
 
 var sqlCmd = &cobra.Command{
-	Use: "sql",
+	Use:   "sql",
 	Short: "sql转变和处理",
-	Long: "sql转换和处理",
+	Long:  "sql转换和处理",
 	Run: func(cmd *cobra.Command, args []string) {
 
 	},
 }
 
 var sql2structCmd = &cobra.Command{
-	Use: "struct",
+	Use:   "struct",
 	Short: "sql转换",
-	Long: "sql转换",
+	Long:  "sql转换",
 	Run: func(cmd *cobra.Command, args []string) {
 		dbInfo := &sql2struct.DBInfo{
 			DBType:   dbType,
