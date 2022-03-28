@@ -4,6 +4,8 @@ import (
 	"database/sql"
 	"errors"
 	"fmt"
+
+	_ "github.com/go-sql-driver/mysql"
 )
 
 type DBModel struct {
@@ -87,6 +89,8 @@ var DBTypeToStructType = map[string]string{
 	"set":       "string",
 	"varchar":   "string",
 	"char":      "string",
+	"longtext":  "string",
+	"text":      "string",
 }
 
 func NewDBModel(info *DBInfo) *DBModel {
