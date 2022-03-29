@@ -13,3 +13,12 @@ type Article struct {
 func (model Article) TableName() string {
 	return "blog_article"
 }
+
+// IArticleRepository 文章仓储接口
+type IArticleRepository interface {
+	Create(*Article) error           // 新建文章
+	Update(*Article) error           // 更新文章
+	Delete(uint32) error             // 删除文章
+	GetById(uint32) (Article, error) // 查询指定文章
+	GetAll() ([]Article, error)      // 查询全部文章
+}

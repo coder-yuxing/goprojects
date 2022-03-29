@@ -1,23 +1,29 @@
 // Package routers 路由管理
 package routers
 
-import "github.com/gin-gonic/gin"
+import (
+	"github.com/gin-gonic/gin"
+	"github.com/yuxing/goprojects/blogservice/internal/middleware"
+	v1 "github.com/yuxing/goprojects/blogservice/internal/routers/api/v1"
+)
 
 func NewRouter() *gin.Engine {
 	r := gin.New()
-	// 配置共用组件
+	// 配置共用组件 (注册中间件)
 	r.Use(gin.Logger())   // 日志
 	r.Use(gin.Recovery()) // 异常处理
+	r.Use(middleware.Translations())
 
+	tag := v1.NewTag()
 	// 配置分组路由
 	apiV1 := r.Group("/api/v1")
 	{
 		// 标签管理相关接口
-		apiV1.POST("/tags")            // 新增标签
-		apiV1.DELETE("/tags/:id")      // 删除指定标签
-		apiV1.PUT("/tags/:id")         // 更新指定标签
-		apiV1.GET("/tags")             // 获取标签列表
-		apiV1.PATCH("/tags/:id/state") // 更新指定标签状态
+		apiV1.POST("/tags", tag.Create) // 新增标签
+		apiV1.DELETE("/tags/:id")       // 删除指定标签
+		apiV1.PUT("/tags/:id")          // 更新指定标签
+		apiV1.GET("/tags")              // 获取标签列表
+		apiV1.PATCH("/tags/:id/state")  // 更新指定标签状态
 
 		// 文章管理相关接口
 		apiV1.POST("/articles")            // 新增文章
