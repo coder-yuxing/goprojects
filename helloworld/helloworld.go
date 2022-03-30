@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-func main() {
+func main1() {
    fmt.Println("hello, world")
 
    test := Test{Name: "test", Numbers: []int{1, 2, 3}}
