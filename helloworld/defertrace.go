@@ -74,7 +74,7 @@ func bar() {
 	defer Trace()()
 }
 
-func main() {
+func main2() {
 	defer Trace()()
 	foo()
 }
