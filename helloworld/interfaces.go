@@ -5,7 +5,7 @@ import "fmt"
 // 接口即契约
 
 // 类型断言
-func main() {
+func main3() {
 	var a int64 = 13
 	var i interface{} = a
 	v1, ok := i.(int64)

@@ -11,7 +11,7 @@ import (
 	"syscall"
 )
 
-func main() {
+func main1() {
 	// 整个文件读入内存
 	// 1. 指定文件名直接将数据读取入内存
 	content, err := readAllFileContent("a.txt")
