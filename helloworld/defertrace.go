@@ -25,7 +25,7 @@ func Trace() func() {
 	indents := m[gid]
 	m[gid] = indents + 1
 	mu.Unlock()
-	printTrace(gid, name, "->", indents + 1)
+	printTrace(gid, name, "->", indents+1)
 	return func() {
 		mu.Lock()
 		indents := m[gid]
@@ -34,7 +34,6 @@ func Trace() func() {
 		printTrace(gid, name, "<-", indents)
 	}
 }
-
 
 // trace2/trace.go
 var goroutineSpace = []byte("goroutine ")
@@ -47,12 +46,12 @@ func curGoroutineID() uint64 {
 	b = bytes.TrimPrefix(b, goroutineSpace)
 	i := bytes.IndexByte(b, ' ')
 	if i < 0 {
-		panic(fmt.Sprintf("No space found in %q", b))
+		panic(fmt.Sprintf("No space found in %q3", b))
 	}
 	b = b[:i]
 	n, err := strconv.ParseUint(string(b), 10, 64)
 	if err != nil {
-		panic(fmt.Sprintf("Failed to parse goroutine ID out of %q: %v", b, err))
+		panic(fmt.Sprintf("Failed to parse goroutine ID out of %q3: %v", b, err))
 	}
 	return n
 }
