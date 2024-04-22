@@ -8,7 +8,7 @@ import (
 	"time"
 )
 
-func spawn(f func() error) <-chan error {
+func spawn1(f func() error) <-chan error {
 	c := make(chan error)
 
 	go func() {
@@ -19,7 +19,7 @@ func spawn(f func() error) <-chan error {
 }
 
 func TestChannel(t *testing.T) {
-	c := spawn(func() error {
+	c := spawn1(func() error {
 		time.Sleep(2 * time.Second)
 		return errors.New("timeout")
 	})
