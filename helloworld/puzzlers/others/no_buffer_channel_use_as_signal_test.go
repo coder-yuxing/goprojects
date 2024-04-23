@@ -74,3 +74,66 @@ func TestChannelSignal2(t *testing.T) {
 	<-c
 	fmt.Println("all workers work done!")
 }
+
+type counter struct {
+	sync.Mutex
+	i int
+}
+
+var cter counter
+
+func Increase() int {
+	cter.Lock()
+	defer cter.Unlock()
+	cter.i++
+	return cter.i
+}
+
+func TestCounter(t *testing.T) {
+	var wg sync.WaitGroup
+	for i := 0; i < 10; i++ {
+		wg.Add(1)
+		go func(i int) {
+			defer wg.Done()
+			fmt.Printf("goroutine-%d: current counter value is %d\n", i, Increase())
+		}(i)
+	}
+	wg.Wait()
+}
+
+// 使用无缓存channel实现计数器
+type chanCounter struct {
+	c chan int
+	i int
+}
+
+func NewChanCounter() *chanCounter {
+	cter := &chanCounter{
+		c: make(chan int),
+	}
+
+	go func() {
+		for {
+			cter.i++
+			cter.c <- cter.i
+		}
+	}()
+	return cter
+}
+
+func (cc *chanCounter) Increase() int {
+	return <-cc.c
+}
+
+func TestChanCounter(t *testing.T) {
+	cter := NewChanCounter()
+	var wg sync.WaitGroup
+	for i := 0; i < 10; i++ {
+		wg.Add(1)
+		go func(i int) {
+			defer wg.Done()
+			fmt.Printf("goroutine-%d: current counter value is %d\n", i, cter.Increase())
+		}(i)
+	}
+	wg.Wait()
+}
